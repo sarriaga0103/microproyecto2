@@ -1,0 +1,18 @@
+.homepage {
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.container {
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  display: flex;
+}
+
+@media (width <= 991px) {
+  .container {
+    max-width: 100%;
+  }
+}
