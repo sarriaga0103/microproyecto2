@@ -1,0 +1,110 @@
+.mission {
+border-radius: 20px;
+width: 100%;
+max-width: 1197px;
+margin-top: 97px;
+padding-bottom: 32px;
+}
+
+.content {
+display: flex;
+gap: 20px;
+}
+
+.imageContainer {
+width: 50%;
+}
+
+.missionImage {
+aspect-ratio: 0.65;
+object-fit: contain;
+object-position: center;
+border-radius: 20px;
+width: 100%;
+}
+
+.textContent {
+width: 50%;
+margin-left: 20px;
+display: flex;
+flex-direction: column;
+align-items: stretch;
+margin: auto 0;
+font-family:
+    Figtree,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+}
+
+.heading {
+color: #da5702;
+letter-spacing: 0.5px;
+text-align: center;
+font-size: 48px;
+font-weight: 700;
+line-height: 1;
+}
+
+.description {
+color: #000;
+margin-top: 65px;
+font-size: 28px;
+font-weight: 300;
+line-height: 50px;
+}
+
+.callout {
+color: #da5702;
+text-align: center;
+margin-top: 59px;
+font-family:
+    Figtree,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+font-size: 32px;
+font-weight: 700;
+line-height: 2;
+}
+
+@media (width <= 991px) {
+.mission {
+    max-width: 100%;
+    margin-top: 40px;
+}
+
+.content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+}
+
+.imageContainer {
+    width: 100%;
+}
+
+.missionImage {
+    margin-top: 40px;
+}
+
+.textContent {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 40px;
+}
+
+.heading {
+    font-size: 40px;
+}
+
+.description {
+    margin-top: 40px;
+}
+
+.callout {
+    margin-top: 40px;
+}
+}
