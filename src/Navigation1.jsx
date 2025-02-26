@@ -2,7 +2,7 @@
 import styles from "./Navigation.module.css";
 import logoSI from '/logoSI.png'
 
-export function Navigation() {
+export function Navigation1() {
   return (
     <nav className={styles.navigation}>
       <img
