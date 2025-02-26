@@ -1,0 +1,152 @@
+/* Footer.module.css */
+
+.pageContainer {
+    flex-direction: column;
+    align-items: center; /* Centrar horizontalmente los elementos hijos (sections) */
+    justify-content: center; /* Centrar verticalmente si es necesario */
+    box-sizing: border-box; /* Incluir el padding en el ancho y alto total */
+  }
+
+.footer {
+  width: 100%;
+  /* max-width: 1233px;  Eliminado max-width para que se ajuste al contenedor principal */
+  padding: 20px 2px; /* Reducido padding horizontal y añadido vertical para espaciado interno */
+  font-family:
+    Figtree,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+}
+
+.content {
+  display: flex;
+  padding: 20px; /* Añadido padding interno para separar contenido del borde del footer */
+  box-sizing: border-box; /* Incluir padding en el ancho total */
+}
+
+.branding {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  aspect-ratio: 2.12;
+  object-fit: contain;
+  object-position: center;
+  width: 100%;
+  max-width: 200px; /* Limitar el ancho máximo del logo en el footer */
+}
+
+.copyright {
+  color: #000;
+  letter-spacing: 0.5px;
+  text-align: center;
+  margin-top: 14px;
+  font-family:
+    Reddit Sans,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.social {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.socialIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background-color: lightgray;
+}
+
+.links {
+  width: 70%;
+  margin-left: 50px;
+  display: flex;
+  gap: 50px;
+  margin-top: 12px;
+}
+
+.linkColumn {
+  flex: 1;
+}
+
+.columnTitle {
+  color: #000;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 7px;
+}
+
+.linkList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.linkList li {
+  margin-top: 7px;
+}
+
+.linkList a {
+  color: #000;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 35px;
+}
+
+/* Media Queries -  Adaptando media queries para el Footer */
+@media (width <= 991px) {
+  .footer {
+    margin-top: 40px;
+  }
+
+  .content {
+    flex-direction: column;
+    align-items: center; /* Centrar elementos del footer en mobile */
+    gap: 40px;
+  }
+
+  .branding {
+    width: 100%;
+    margin-top: 0; /* Eliminar margen superior innecesario en mobile */
+    margin-bottom: 40px; /* Añadir margen inferior para separar branding de links en mobile */
+  }
+
+  .logo {
+    max-width: 150px; /* Reducir el tamaño del logo en mobile */
+  }
+
+  .links {
+    width: 100%;
+    margin-left: 0;
+    flex-direction: column;
+    margin-top: 0; /* Eliminar margen superior innecesario en mobile */
+  }
+
+  .linkColumn {
+    margin-top: 20px; /* Reducir margen superior entre columnas en mobile */
+    text-align: center; /* Centrar el texto de las columnas en mobile */
+  }
+
+  .columnTitle {
+    font-size: 18px; /* Reducir el tamaño del título de columna en mobile */
+  }
+
+  .linkList a {
+    font-size: 18px; /* Reducir el tamaño de los links en mobile */
+    line-height: 30px; /* Reducir el espaciado entre líneas en mobile */
+  }
+}

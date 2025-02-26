@@ -1,0 +1,183 @@
+/* Page1.module.css */
+
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar horizontalmente los elementos hijos (sections) */
+    justify-content: center; /* Centrar verticalmente si es necesario */
+    min-height: 100vh; /* Asegura que el contenedor principal ocupa al menos toda la altura de la pantalla */
+    padding: 50px; /* Margen de 50px alrededor */
+    box-sizing: border-box; /* Incluir el padding en el ancho y alto total */
+  }
+  
+  .hero {
+    width: 90%;
+    margin: 50px;
+  }
+  
+  .content {
+    width: 100%;
+    display: flex;
+    gap: 80px;
+  }
+  
+  .textContent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea el contenido de texto a la izquierda */
+    width: 56%;
+    line-height: normal;
+  }
+  
+  .heading {
+    color: #000;
+    font-size: 96px;
+    font-weight: 400;
+    transform: rotate(0.384015deg);
+    font-family: Figtree, -apple-system, Roboto, Helvetica, sans-serif;
+  }
+  
+ 
+  .highlight {
+    font-weight: 900;
+    color: #e15616;
+  }
+  
+  .ctaButton {
+    color: #fff;
+    background-color: #ee9a12;
+    border-radius: 40px;
+    align-self: center; /* Alinea el botón al inicio del contenedor de texto */
+    width: 212px;
+    max-width: 100%;
+    margin-top: 72px;
+    padding: 20px 52px;
+    font-size: 20px;
+    font-weight: 800;
+    text-decoration: none;
+    text-align: center;
+    font-family: Figtree, -apple-system, Roboto, Helvetica, sans-serif;
+
+  }
+  
+  .imageContainer {
+    width: 44%; /* Ancho para Hero y Mission imageContainer unificado */
+  }
+  
+  .heroImage, .missionImage { /* Estilos comunes para ambas imagenes */
+    aspect-ratio: 0.7;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 20px;
+    width: 100%;
+  }
+  
+  .mission {
+    border-radius: 20px;
+    width: 90%;
+    padding-bottom: 32px;
+    margin: 20px;
+  }
+  
+  /* .content (Repetido y unificado arriba) */
+  
+  /* .imageContainer (Repetido y unificado arriba) */
+  
+  .missionImage {
+    aspect-ratio: 0.65; /* Sobreescribe aspect ratio para MissionImage */
+    /* Estilos comunes unificados en .heroImage, .missionImage */
+  }
+  
+  /* .textContent (Repetido y unificado arriba) */
+  
+  .mission .textContent { /* Especificidad para mission textContent si se necesita */
+    margin: auto 0; /* Centra verticalmente el texto en Mission */
+    font-family: Figtree, -apple-system, Roboto, Helvetica, sans-serif;
+    align-items: center;
+  }
+  
+  
+  /* .heading - Unificado y se usara modificador si es necesario para Mission */
+  .mission .heading {
+    color: #da5702; /* Color especifico para Mission heading */
+    letter-spacing: 0.5px;
+    text-align: center;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1;
+    transform: none; /* Eliminar la rotacion del heading del Hero */
+  }
+  
+  
+  .description {
+    color: #000;
+    margin-top: 0px;
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 50px;
+    text-align: justify;
+  }
+  
+  .callout {
+    color: #da5702;
+    text-align: center;
+    margin-top: 59px;
+    font-family: Figtree, -apple-system, Roboto, Helvetica, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 2;
+  }
+  
+  /* Media Queries - Unificadas las reglas para Hero y Mission */
+  @media (width <= 991px) {
+    .pageContainer {
+      padding: 20px; /* Reducir padding en pantallas pequeñas */
+    }
+  
+    .hero, .mission {
+      margin-bottom: 60px; /* Reducir el margen bottom en pantallas pequeñas */
+    }
+  
+    .content {
+      flex-direction: column;
+      align-items: center; /* Centrar contenido en pantallas pequeñas */
+      gap: 40px; /* Reducir el gap en pantallas pequeñas */
+    }
+  
+    .imageContainer {
+      width: 80%; /* Ancho de imagen responsivo */
+      margin-left: 0;
+      margin-top: 40px;
+    }
+  
+    .textContent {
+      width: 100%; /* Text content ocupa todo el ancho disponible */
+      margin-left: 0;
+      margin-top: 40px;
+      align-items: center; /* Centrar texto en pantallas pequeñas */
+      text-align: center; /* Centrar texto en pantallas pequeñas */
+    }
+  
+    .heading {
+      font-size: 40px;
+      transform: none; /* Eliminar la rotacion en responsive */
+    }
+  
+    .ctaButton {
+      margin-top: 40px;
+      padding: 15px 30px; /* Reducir padding del boton en responsive */
+      align-self: center; /* Centrar boton en responsive */
+    }
+  
+  
+    .description {
+      margin-top: 40px;
+      font-size: 24px; /* Reducir font-size en responsive */
+      line-height: 40px; /* Reducir line-height en responsive */
+    }
+  
+    .callout {
+      margin-top: 40px;
+      font-size: 28px; /* Reducir font-size en responsive */
+    }
+  }
