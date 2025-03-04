@@ -1,4 +1,4 @@
-import React from "react";
+
 import styles from "./RegistrationForm.module.css";
 
 const FormInput = ({ label, type, placeholder, value }) => {

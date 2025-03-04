@@ -1,4 +1,4 @@
-import React from "react";
+import logoSI from '/logoSI.png'
 import styles from "./RegistrationForm.module.css";
 
 const FormHeader = () => {
@@ -6,7 +6,7 @@ const FormHeader = () => {
     <header>
       <div className={styles.logo}>
         <img
-          src="https://placehold.co/100x60/2D5A27/2D5A27"
+          src={logoSI}
           alt="Sendero Naranja Logo"
           className={styles.img}
         />
