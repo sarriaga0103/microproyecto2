@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import styles from "./Login.module.css";
+import logoSI from "/logoSI.png";
 
 // Header component with registration text and home icon
 const Header = () => {
@@ -55,14 +56,18 @@ const InputField = ({ type, value, placeholder, iconType }) => {
 };
 
 // Social login button component
-const SocialButton = ({ platform, iconUrl }) => {
+const SocialButton = ({ platform }) => {
   return (
     <button
-      className={
-        platform === "google" ? styles.googleButton : styles.facebookButton
+        className={
+          platform === "google" ? styles.googleButton : styles.facebookButton
       }
     >
-      <img src={iconUrl} alt={platform} className={styles.socialIcon} />
+      {platform === "google" ? (
+          <i className="ti ti-brand-google" />
+      ) : (
+          <i className="ti ti-brand-facebook" />
+      )}
       <span>Usar {platform === "google" ? "Google" : "Facebook"}</span>
     </button>
   );
@@ -73,7 +78,7 @@ const LogoSection = () => {
   return (
     <div className={styles.logoSection}>
       <img
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/da593ca05f2b903555358f7595b378924927d53e"
+        src={logoSI}
         alt="Logo"
         className={styles.logo}
       />

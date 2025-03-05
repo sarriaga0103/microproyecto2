@@ -140,4 +140,49 @@
       flex-direction: column;
     }
   }
-  
+
+  /* Nuevos estilos para el combobox y el botón "Registrarse" */
+  .select {
+    background-color: #eee;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 12px;
+    font-family: Poppins, sans-serif;
+    font-size: 14px;
+    color: #555;
+    width: 50%;
+    margin-top: 8px;
+}
+
+.btnRegister {
+    cursor: pointer;
+    color: #fff;
+    background-color: #ee9a12;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    width: 50%;
+    margin-top: 10px;
+    }
+
+.btnRegister:hover {
+    background-color: #d1850f;
+}
+
+/* Estilos para el contenedor padre */
+.registerAs {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos verticalmente */
+}
+
+.buttonRegister{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}

@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./Page1.module.css";
 import img1hp from '/Img1HP.png'
 import img2hp from '/Img2HP.png'

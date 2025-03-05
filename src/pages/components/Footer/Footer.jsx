@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./Footer.module.css";
 import instagramlogo from '/instagramlogo.png'
 import ProyectoAvila from '/ProyectoAvila.png'
