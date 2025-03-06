@@ -21,6 +21,7 @@ const RegistrationForm = () => {
     );
   };
 
+  
   // Componente FormInput condensado
   const FormInput = ({ label, type, placeholder, value }) => {
     return (
