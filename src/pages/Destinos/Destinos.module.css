@@ -1,0 +1,9 @@
+.homePage {
+    background-color: #fff;
+    flex-direction: column;
+    align-items: stretch;
+    display: flex;
+    overflow: hidden;
+    transform: rotate(-31805500000000000000deg);
+  }
+  
