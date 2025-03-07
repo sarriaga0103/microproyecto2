@@ -11,30 +11,33 @@ export function Navigation1() {
       <h1 className={styles.brand}>Sendero Naranja</h1>
       <ul className={styles.navLinks}>
         <li>
-          <a href="#destinations" className={styles.navLink}>
+          <a href="/login" className={styles.navLink}>
             Destinos
           </a>
         </li>
         <li>
-          <a href="#about" className={styles.navLink}>
+          <a href="/about" className={styles.navLink}>
             Sobre Nosotros
           </a>
         </li>
         <li>
-          <a href="#gallery" className={styles.navLink}>
+          <a href="/gallery" className={styles.navLink}>
             Galeria
           </a>
         </li>
         <li>
-          <a href="#register" className={styles.navLink}>
+          <a href="/register" className={styles.navLink}>
             Registrarte
           </a>
         </li>
         <li>
-        <button className={styles.loginButton}>Iniciar Sesión</button>
+        <a href="/login" className={styles.loginButton}>
+            Iniciar Sesión
+          </a> 
         </li>
       </ul>
      
     </nav>
   );
 }
+
