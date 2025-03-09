@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./RegistrationForm.module.css";
 import logoSI from '/logoSI.png';
 //import { get } from "firebase/database";
@@ -11,7 +11,7 @@ import logoSI from '/logoSI.png';
 
 
 const RegistrationForm = () => {
-  //const [registroComo, setRegistroComo] = useState("Estudiante"); // Estado para el valor seleccionado
+  const [registroComo, setRegistroComo] = useState("Estudiante"); // Estado para el valor seleccionado
 
   //Componente FormHeader condensado
   const FormHeader = () => {
