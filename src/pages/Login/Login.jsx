@@ -9,7 +9,7 @@ const Header = () => {
     <header className={styles.header}>
       <p className={styles.registerText}>
         <span>¿Aún no tienes una cuenta?</span>
-        <span className={styles.registerLink}>Registrate gratis</span>
+        <a href="/register" className={styles.registerLink}>Registrate gratis</a>
       </p>
       <div className={styles.homeIcon}>
         <i className={styles.tiTiHome} />
@@ -93,13 +93,11 @@ const LoginForm = () => {
     <form className={styles.loginForm}>
       <InputField
         type="email"
-        value="info@unimet.edu.ve"
-        placeholder=""
+        placeholder="info@unimet.edu.ve"
         iconType="email"
       />
       <InputField
         type="password"
-        value=""
         placeholder="Ingresa tu contraseña"
         iconType="lock"
       />

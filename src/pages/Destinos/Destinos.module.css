@@ -7,3 +7,21 @@
     transform: rotate(-31805500000000000000deg);
   }
   
+  .i {
+    color: #49454f;
+    font-size: 24px;
+  }
+  .input {
+    color: #49454f;
+    background: 0 0;
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 16px;
+  }
+  .contentContainer {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 40px;
+    display: flex;
+  }

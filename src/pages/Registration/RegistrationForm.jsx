@@ -1,19 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./RegistrationForm.module.css";
 import logoSI from '/logoSI.png';
-import { get } from "firebase/database";
-import { app } from "../credenciales";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+//import { get } from "firebase/database";
+//import { app } from "../../credenciales";
+//import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
-const auth = getAuth(app);
+//const auth = getAuth(app);
 
 
 
 
 const RegistrationForm = () => {
-  const [registroComo, setRegistroComo] = useState("Estudiante"); // Estado para el valor seleccionado
+  //const [registroComo, setRegistroComo] = useState("Estudiante"); // Estado para el valor seleccionado
 
-  // Componente FormHeader condensado
+  //Componente FormHeader condensado
   const FormHeader = () => {
     return (
       <header>
@@ -109,24 +109,24 @@ const RegistrationForm = () => {
               <FormInput
                 label="Email (institucional):"
                 type="email"
-                value="info@unimet.edu.ve"
+                placeholder="info@unimet.edu.ve"
               />
               <FormInput
                 label="Número de teléfono:"
                 type="tel"
-                value="+58 414-3686749"
+                placeholder="+58 414-3686749"
               />
             </div>
             <div className={styles.formRow}>
               <FormInput
                 label="Contraseña:"
                 type="password"
-                value="xxxxxxxxx"
+                placeholder="xxxxxxxxx"
               />
               <FormInput
                 label="Confirma tu contraseña:"
                 type="password"
-                value="xxxxxxxxx"
+                placeholder="xxxxxxxxx"
               />
             </div>
             <ButtonGroup />
