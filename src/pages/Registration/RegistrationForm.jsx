@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import styles from "./RegistrationForm.module.css";
 import logoSI from '/logoSI.png';
+import { get } from "firebase/database";
+import { app } from "../credenciales";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
+const auth = getAuth(app);
+
+
+
 
 const RegistrationForm = () => {
   const [registroComo, setRegistroComo] = useState("Estudiante"); // Estado para el valor seleccionado
