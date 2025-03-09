@@ -7,6 +7,67 @@ import { useNavigate } from "react-router";
 
 const auth = getAuth(app);
 
+
+
+const ButtonGroup = ({ registroComo, setRegistroComo }) => {
+  return (
+    <>
+      <div className={styles.registerAs}>
+        <label className={styles.label}>Registrar como:</label>
+        <select
+          className={styles.select}
+          value={registroComo}
+          onChange={(e) => setRegistroComo(e.target.value)}
+        >
+          <option value="Estudiante">Estudiante</option>
+          <option value="Guía">Guía</option>
+        </select>
+      </div>
+      <div className={styles.buttonRegister}>
+        <button type="submit" className={styles.btnRegister}>
+          Registrarse
+        </button>
+      </div>
+      <div className={styles.socialButtons}>
+        <button type="button" className={styles.btnGoogle}>
+          <i className="ti ti-brand-google" />
+          <span>Usar Google</span>
+        </button>
+        <button type="button" className={styles.btnFacebook}>
+          <i className="ti ti-brand-facebook" />
+          <span>Usar Facebook</span>
+        </button>
+      </div>
+    </>
+  );
+};
+
+const FormHeader = () => {
+  return (
+    <header>
+      <div className={styles.logo}>
+        <img src={logoSI} alt="Sendero Naranja Logo" className={styles.img} />
+      </div>
+      <h1 className={styles.title}>Registra tu cuenta</h1>
+    </header>
+  );
+};
+
+const FormInput = ({ label, type, placeholder, value, onChange }) => {
+  return (
+    <div className={styles.formGroup}>
+      <label className={styles.label}>{label}</label>
+      <input
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        className={styles.input}
+      />
+    </div>
+  );
+};
+
 const RegistrationForm = () => {
   const [registroComo, setRegistroComo] = useState("Estudiante");
   const [nombre, setNombre] = useState("");
@@ -64,75 +125,8 @@ const RegistrationForm = () => {
     }
   };
 
-  const FormHeader = () => {
-    return (
-      <header>
-        <div className={styles.logo}>
-          <img src={logoSI} alt="Sendero Naranja Logo" className={styles.img} />
-        </div>
-        <h1 className={styles.title}>Registra tu cuenta</h1>
-      </header>
-    );
-  };
-
-  const FormInput = ({ label, type, placeholder, value, onChange }) => {
-    return (
-      <div className={styles.formGroup}>
-        <label className={styles.label}>{label}</label>
-        <input
-          type={type}
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-          className={styles.input}
-        />
-      </div>
-    );
-  };
-
-  const ButtonGroup = () => {
-    return (
-      <>
-        <div className={styles.registerAs}>
-          <label className={styles.label}>Registrar como:</label>
-          <select
-            className={styles.select}
-            value={registroComo}
-            onChange={(e) => setRegistroComo(e.target.value)}
-          >
-            <option value="Estudiante">Estudiante</option>
-            <option value="Guía">Guía</option>
-          </select>
-        </div>
-        <div className={styles.buttonRegister}>
-          <button type="submit" className={styles.btnRegister}>
-            Registrarse
-          </button>
-        </div>
-        <div className={styles.socialButtons}>
-          <button type="button" className={styles.btnGoogle}>
-            <i className="ti ti-brand-google" />
-            <span>Usar Google</span>
-          </button>
-          <button type="button" className={styles.btnFacebook}>
-            <i className="ti ti-brand-facebook" />
-            <span>Usar Facebook</span>
-          </button>
-        </div>
-      </>
-    );
-  };
-
   return (
     <>
-      <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
-      />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
-        rel="stylesheet"
-      />
       <main className={styles.container}>
         <section className={styles.content}>
           <FormHeader />
@@ -188,7 +182,7 @@ const RegistrationForm = () => {
             {passwordError && (
               <p className={styles.error}>{passwordError}</p>
             )}
-            <ButtonGroup />
+            <ButtonGroup  registroComo={registroComo} setRegistroComo={setRegistroComo}/>
           </form>
         </section>
       </main>
