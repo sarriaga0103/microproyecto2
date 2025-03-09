@@ -3,7 +3,7 @@
     border-radius: 28px;
     justify-content: start;
     align-self: center;
-    align-items: stretch;
+    align-items: center;
     gap: 4px;
     width: 643px;
     min-width: 360px;
@@ -90,7 +90,7 @@
     color: #49454f;
     letter-spacing: 0.5px;
     flex: 1;
-    align-self: stretch;
+    align-self: center;
     gap: 10px;
     min-width: 240px;
     height: 100%;
