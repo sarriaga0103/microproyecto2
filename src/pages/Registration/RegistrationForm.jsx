@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import styles from "./RegistrationForm.module.css";
 import logoSI from "/logoSI.png";
 import { app } from "../../credenciales";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router"; 
+import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, fetchSignInMethodsForEmail } from "firebase/auth";
+import { useNavigate } from "react-router";
 
 const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
 
-
-
-const ButtonGroup = ({ registroComo, setRegistroComo }) => {
+const ButtonGroup = ({ registroComo, setRegistroComo, handleGoogleSignIn }) => {
   return (
     <>
       <div className={styles.registerAs}>
@@ -29,13 +28,9 @@ const ButtonGroup = ({ registroComo, setRegistroComo }) => {
         </button>
       </div>
       <div className={styles.socialButtons}>
-        <button type="button" className={styles.btnGoogle}>
+        <button type="button" className={styles.btnGoogle} onClick={handleGoogleSignIn}>
           <i className="ti ti-brand-google" />
           <span>Usar Google</span>
-        </button>
-        <button type="button" className={styles.btnFacebook}>
-          <i className="ti ti-brand-facebook" />
-          <span>Usar Facebook</span>
         </button>
       </div>
     </>
@@ -77,11 +72,40 @@ const RegistrationForm = () => {
   const [contraseña, setContraseña] = useState("");
   const [confirmContraseña, setConfirmContraseña] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
+
+  const handleGoogleSignIn = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const userEmail = result.user.email;
+      
+      const emailRegex = /^[a-zA-Z0-9._-]+@correo\.unimet\.edu\.ve$/;
+      if (!emailRegex.test(userEmail)) {
+        alert("Solo se permiten correos @correo.unimet.edu.ve");
+        return;
+      }
+
+      // Verificar si el correo electrónico ya está registrado
+      const signInMethods = await fetchSignInMethodsForEmail(auth, userEmail);
+      
+      if (signInMethods.length > 0) {
+        // El correo ya está registrado, redirigir al inicio de sesión
+        alert("Ya estás registrado. Por favor, inicia sesión.");
+        navigate("/login");  // Redirigir a la página de login
+      } else {
+        // Si el correo no está registrado, proceder con el registro
+        console.log("Usuario registrado con Google:", userEmail);
+        navigate("/destinos");
+      }
+    } catch (error) {
+      console.error("Error al autenticar con Google:", error);
+      alert("Error al autenticar con Google. Intenta nuevamente.");
+    }
+  };
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    setPasswordError(""); // Limpia el error anterior
+    setPasswordError("");
 
     if (contraseña !== confirmContraseña) {
       setPasswordError("Las contraseñas no coinciden.");
@@ -105,8 +129,8 @@ const RegistrationForm = () => {
     }
 
     try {
-      const nombreRegistrado = await createUserWithEmailAndPassword(auth,email,contraseña);
-      console.log(nombreRegistrado.user.email);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, contraseña);
+      console.log("Usuario registrado:", userCredential.user.email);
 
       setNombre("");
       setApellido("");
@@ -115,7 +139,6 @@ const RegistrationForm = () => {
       setContraseña("");
       setConfirmContraseña("");
 
-      // Redirigir a /destinos si es estudiante
       if (registroComo === "Estudiante") {
         navigate("/destinos");
       }
@@ -179,10 +202,8 @@ const RegistrationForm = () => {
                 onChange={(e) => setConfirmContraseña(e.target.value)}
               />
             </div>
-            {passwordError && (
-              <p className={styles.error}>{passwordError}</p>
-            )}
-            <ButtonGroup  registroComo={registroComo} setRegistroComo={setRegistroComo}/>
+            {passwordError && <p className={styles.error}>{passwordError}</p>}
+            <ButtonGroup registroComo={registroComo} setRegistroComo={setRegistroComo} handleGoogleSignIn={handleGoogleSignIn} />
           </form>
         </section>
       </main>
