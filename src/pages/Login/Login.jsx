@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import styles from "./Login.module.css";
 import logoSI from "/logoSI.png";
-import { app } from "../../credenciales";  // Ensure this file is correctly configured
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router";  // For redirecting after login
+import { app } from "../../credenciales";
+import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { useNavigate } from "react-router";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
 
 const Header = () => {
   return (
@@ -62,12 +63,11 @@ const InputField = ({ type, value, placeholder, iconType, onChange, togglePasswo
   );
 };
 
-const SocialButton = ({ platform }) => {
+const SocialButton = ({ platform, onClick }) => {
   return (
     <button
-      className={
-        platform === "google" ? styles.googleButton : styles.facebookButton
-      }
+      className={platform === "google" ? styles.googleButton : styles.facebookButton}
+      onClick={onClick}
     >
       {platform === "google" ? (
         <i className="ti ti-brand-google" />
@@ -98,15 +98,39 @@ const LoginForm = ({ email, setEmail, contraseña, setContraseña, setError }) =
 
   const handleLogin = async (e) => {
     e.preventDefault();
+  
+    if (!email.endsWith("@correo.unimet.edu.ve")) {
+      setError("Debes usar un correo institucional (@correo.unimet.edu.ve).");
+      return;
+    }
+  
     try {
       await signInWithEmailAndPassword(auth, email, contraseña);
       navigate("/destinos");
     } catch (error) {
-      setError("Error al iniciar sesión. Por favor verifica tus datos.");
+      setError("Correo no registrado o contraseña incorrecta.");
       console.error("Error al iniciar sesión", error);
     }
   };
-
+  
+  const handleGoogleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const userEmail = result.user.email;
+  
+      if (!userEmail.endsWith("@correo.unimet.edu.ve")) {
+        setError("Debes usar un correo institucional (@correo.unimet.edu.ve).");
+        await auth.signOut(); // Cierra sesión inmediatamente si el correo no es válido
+        return;
+      }
+  
+      navigate("/destinos");
+    } catch (error) {
+      setError("Error al iniciar sesión con Google.");
+      console.error("Error con Google Sign-In", error);
+    }
+  };
+  
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
   };
@@ -132,6 +156,7 @@ const LoginForm = ({ email, setEmail, contraseña, setContraseña, setError }) =
       <button type="submit" className={styles.loginButton}>
         Inicia sesión
       </button>
+      <SocialButton platform="google" onClick={handleGoogleLogin} />
     </form>
   );
 };
@@ -157,10 +182,6 @@ const LoginPage = () => {
           setContraseña={setContraseña}
           setError={setError}
         />
-        <div className={styles.socialSection}>
-          <SocialButton platform="google" />
-          <SocialButton platform="facebook" />
-        </div>
       </div>
     </div>
   );
