@@ -65,9 +65,9 @@ const InputField = ({ type, value, placeholder, iconType, onChange, togglePasswo
 const SocialButton = ({ platform }) => {
   return (
     <button
-      className={
+      className={`${styles.socialButton} ${
         platform === "google" ? styles.googleButton : styles.facebookButton
-      }
+      }`}
     >
       {platform === "google" ? (
         <i className="ti ti-brand-google" />
@@ -78,6 +78,7 @@ const SocialButton = ({ platform }) => {
     </button>
   );
 };
+
 
 const LogoSection = () => {
   return (
@@ -132,6 +133,7 @@ const LoginForm = ({ email, setEmail, contraseña, setContraseña, setError }) =
       <button type="submit" className={styles.loginButton}>
         Inicia sesión
       </button>
+      <SocialButton platform="google" />
     </form>
   );
 };
@@ -143,12 +145,13 @@ const LoginPage = () => {
 
   return (
     <div className={styles.container}>
+      <Header />
       <div className={styles.leftPanel}>
         <LogoSection />
       </div>
       <div className={styles.rightPanel}>
-        <Header />
-        <h2 className={styles.title}>Inicia sesión</h2>
+        
+        <h2 className={styles.loginTitle}>Inicia sesión</h2>
         {error && <p className={styles.error}>{error}</p>}
         <LoginForm
           email={email}
@@ -158,8 +161,6 @@ const LoginPage = () => {
           setError={setError}
         />
         <div className={styles.socialSection}>
-          <SocialButton platform="google" />
-          <SocialButton platform="facebook" />
         </div>
       </div>
     </div>
