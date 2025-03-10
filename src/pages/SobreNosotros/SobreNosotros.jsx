@@ -2,6 +2,10 @@ import React from "react";
 import styles from "./SobreNosotros.module.css";
 import { Navigation1 } from "../components/Navigation/Navigation1";
 import { Footer } from "../components/Footer/Footer";
+import instagramlogo from '/instagramlogo.png'
+import facebooklogo from '/facebooklogo.png'
+import youtubelogo from '/youtubelogo.png'
+import correologo from '/correologo.png'
 
 const SobreNosotros = () => {
   return (
@@ -107,26 +111,34 @@ const SobreNosotros = () => {
                 className={styles.contactLink}
               >
                 <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/47a6ac812ece9b3a01a144dd0d82af0b7177b5551071d7e176299d31e819a997?placeholderIfAbsent=true&apiKey=6a7d2e90de454ae2ae9f8761f3898725"
+                  src={correologo}
                   alt="Email icon"
                   className={styles.icon}
                 />
                 <span>senderonaranja@unimet.edu.ve</span>
               </a>
-              <a href="#youtube" className={styles.contactLink}>
-                <div className={styles.youtubeIcon} />
+              <a href="/youtube" className={styles.contactLink}>
+                <img
+                  src={youtubelogo}
+                  alt="Youtube icon"
+                  className={styles.icon}
+                />
                 <span>Sendero Naranja</span>
               </a>
-              <a href="#facebook" className={styles.contactLink}>
+              <a href="/facebook" className={styles.contactLink}>
                 <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/8454812709fb6386645b6741a98a16601bc0e22a491afc8a236215df39e53c6e?placeholderIfAbsent=true&apiKey=6a7d2e90de454ae2ae9f8761f3898725"
+                  src={facebooklogo}
                   alt="Facebook icon"
                   className={styles.icon}
                 />
                 <span>Sendero Naranja</span>
               </a>
-              <a href="#instagram" className={styles.contactLink}>
-                <div className={styles.instagramIcon} />
+              <a href="/instagram" className={styles.contactLink}>
+                <img
+                  src={instagramlogo}
+                  alt="Instagram icon"
+                  className={styles.icon}
+                />
                 <span>Sendero Naranja</span>
               </a>
             </div>
