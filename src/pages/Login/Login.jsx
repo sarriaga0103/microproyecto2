@@ -69,6 +69,7 @@ const SocialButton = ({ platform, onClick }) => {
       className={`${styles.socialButton} ${
         platform === "google" ? styles.googleButton : styles.facebookButton
       }`}
+      onClick={onClick}
     >
       {platform === "google" ? (
         <i className="ti ti-brand-google" />

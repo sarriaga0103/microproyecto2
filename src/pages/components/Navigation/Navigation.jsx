@@ -16,7 +16,7 @@ function Navigation() {
               </a>
             </li>
             <li>
-              <a href="/about" className={styles.navLink}>
+              <a href="/about1" className={styles.navLink}>
                 Sobre Nosotros
               </a>
             </li>

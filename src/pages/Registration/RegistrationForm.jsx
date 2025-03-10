@@ -72,40 +72,44 @@ const RegistrationForm = () => {
   const [contraseña, setContraseña] = useState("");
   const [confirmContraseña, setConfirmContraseña] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [generalError, setGeneralError] = useState(""); // Nuevo estado para errores generales
   const navigate = useNavigate();
 
   const handleGoogleSignIn = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const userEmail = result.user.email;
-      
-      const emailRegex = /^[a-zA-Z0-9._-]+@correo\.unimet\.edu\.ve$/;
-      if (!emailRegex.test(userEmail)) {
-        alert("Solo se permiten correos @correo.unimet.edu.ve");
+  
+      let registroComo = "";
+      if (userEmail.endsWith("@correo.unimet.edu.ve")) {
+        registroComo = "Estudiante";
+      } else if (userEmail.endsWith("@unimet.edu.ve")) {
+        registroComo = "Guía";
+      } else {
+        setGeneralError("Solo se permiten correos @correo.unimet.edu.ve o @unimet.edu.ve");
         return;
       }
-
-      // Verificar si el correo electrónico ya está registrado
+  
       const signInMethods = await fetchSignInMethodsForEmail(auth, userEmail);
-      
+  
       if (signInMethods.length > 0) {
-        // El correo ya está registrado, redirigir al inicio de sesión
-        alert("Ya estás registrado. Por favor, inicia sesión.");
-        navigate("/login");  // Redirigir a la página de login
+        setGeneralError("Ya estás registrado. Por favor, inicia sesión.");
+        navigate("/login");
       } else {
-        // Si el correo no está registrado, proceder con el registro
-        console.log("Usuario registrado con Google:", userEmail);
-        navigate("/destinos");
+        console.log("Usuario registrado con Google:", userEmail, "como", registroComo);
+        // Aquí podrías guardar 'registroComo' en tu base de datos si es necesario
+        navigate("/login");
       }
     } catch (error) {
       console.error("Error al autenticar con Google:", error);
-      alert("Error al autenticar con Google. Intenta nuevamente.");
+      setGeneralError("Error al autenticar con Google. Intenta nuevamente.");
     }
   };
 
   const handleRegister = async (e) => {
     e.preventDefault();
     setPasswordError("");
+    setGeneralError(""); // Limpiar errores generales al intentar registrar
 
     if (contraseña !== confirmContraseña) {
       setPasswordError("Las contraseñas no coinciden.");
@@ -118,7 +122,7 @@ const RegistrationForm = () => {
         : /^[a-zA-Z0-9._-]+@unimet\.edu\.ve$/;
 
     if (!emailRegex.test(email)) {
-      alert(
+      setGeneralError(
         `Por favor, usa un correo válido de ${
           registroComo === "Estudiante"
             ? "@correo.unimet.edu.ve"
@@ -140,11 +144,11 @@ const RegistrationForm = () => {
       setConfirmContraseña("");
 
       if (registroComo === "Estudiante") {
-        navigate("/destinos");
+        navigate("/login");
       }
     } catch (error) {
       console.error("Error al registrar:", error);
-      alert("Error al registrar. Por favor, intenta de nuevo.");
+      setGeneralError("Error al registrar. Por favor, intenta de nuevo.");
     }
   };
 
@@ -203,6 +207,7 @@ const RegistrationForm = () => {
               />
             </div>
             {passwordError && <p className={styles.error}>{passwordError}</p>}
+            {generalError && <p className={styles.error}>{generalError}</p>} {/* Mostrar errores generales */}
             <ButtonGroup registroComo={registroComo} setRegistroComo={setRegistroComo} handleGoogleSignIn={handleGoogleSignIn} />
           </form>
         </section>

@@ -186,3 +186,12 @@
     flex-direction: column;
     align-items: center;
 }
+
+/* Error message styles */
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center; /* Centrar el texto de error */
+  font-family: Poppins, sans-serif;
+}

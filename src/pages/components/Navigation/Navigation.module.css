@@ -63,6 +63,10 @@
   margin-right: 30px;
 }
 
+.menuIcon{
+  margin-right: 50px;
+}
+
 /* Media queries para pantallas intermedias (tablets) y pequeñas (móviles) */
 @media (max-width: 1024px) {
   .navigation {
